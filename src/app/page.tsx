@@ -3,7 +3,7 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { ProductCard } from "@/components/product-card";
-import { useRef } from "react";
+import { useRouter } from "next/navigation";
 
 const data = [
   {
@@ -30,26 +30,19 @@ const data = [
 ];
 
 export default function Home() {
-  let coffeeRef = useRef<HTMLParagraphElement>(null);
+  const { push } = useRouter();
 
   const scrollHandler = (e: any) => {
-    e.preventDefault();
-    // @ts-ignore
-    coffeeRef.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    push("/cart");
   };
+
   return (
     <>
       <Header scrollHandler={scrollHandler} />
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8 bg-white">
         <div className="sm:py-15 mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p
-              className="mt-1 text-4xl font-bold uppercase text-gray-900 sm:text-5xl sm:tracking-tight lg:text-5xl"
-              ref={coffeeRef}
-            >
+            <p className="mt-1 text-4xl font-bold uppercase text-gray-900 sm:text-5xl sm:tracking-tight lg:text-5xl">
               Crafted by us, for you
             </p>
           </div>

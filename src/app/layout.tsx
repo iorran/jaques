@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ManualFacebookPixel } from "@/components/manual-facebook-pixel";
+import { FacebookPixel } from "@/components/facebook-pixel";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <ManualFacebookPixel />
-      </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {children}
+        <FacebookPixel />
+      </body>
     </html>
   );
 }
